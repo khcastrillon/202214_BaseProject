@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { CiudadService } from './ciudad.service';
 
-@Module({})
+@Module({
+  providers: [CiudadService]
+})
 export class CiudadModule {}
