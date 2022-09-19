@@ -33,12 +33,12 @@ export class CiudadService {
 
     async update(id: string, ciudad: CiudadEntity): Promise<CiudadEntity> {
         const persistedCiudad: CiudadEntity = await this.ciudadRepository.findOne({where:{id}});
-        
-        if (!this.ciudades.includes(ciudad.pais))
-            throw new BusinessLogicException("Invalid country", BusinessError.PRECONDITION_FAILED);
 
         if (!persistedCiudad)
           throw new BusinessLogicException("The ciudad with the given id was not found", BusinessError.NOT_FOUND);
+        
+        if (!this.ciudades.includes(ciudad.pais))
+            throw new BusinessLogicException("Invalid country", BusinessError.PRECONDITION_FAILED);
         
         return await this.ciudadRepository.save({...persistedCiudad, ...ciudad});
     }
