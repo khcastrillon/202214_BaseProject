@@ -127,6 +127,7 @@ describe('CiudadService', () => {
     await expect(() => service.update(ciudad.id, ciudad)).rejects.toHaveProperty("message", "Invalid country")
   });
 
+  //Test delete
   it('delete should remove a ciudad', async () => {
     const ciudad: CiudadEntity = ciudadesList[0];
     await service.delete(ciudad.id);
@@ -135,6 +136,7 @@ describe('CiudadService', () => {
     expect(deletedCiudad).toBeNull();
   });
 
+  //Test delete invalid ciudad
   it('delete should throw an exception for an invalid ciudad', async () => {
     const ciudad: CiudadEntity = ciudadesList[0];
     await service.delete(ciudad.id);
